@@ -95,6 +95,13 @@ end
 
 directory "#{cookbook_dir}/recipes"
 
+# Add unit recipe for Unit Stage
+template "#{cookbook_dir}/recipes/unit.rb" do
+  source "recipe.rb.erb"
+  helpers(ChefDK::Generator::TemplateHelper)
+  action :create_if_missing
+end
+
 template "#{cookbook_dir}/recipes/default.rb" do
   source "recipe.rb.erb"
   helpers(ChefDK::Generator::TemplateHelper)
